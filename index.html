@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claude Code in Action</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/atom-one-dark.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ══ TOP BAR ══════════════════════════════════════════ -->
+<header id="topbar">
+  <div class="tb-left">
+    <div class="tb-logo">⚡</div>
+    <span class="tb-brand">Claude Code <span>in Action</span></span>
+  </div>
+  <div class="tb-center">
+    <span class="topic-pill" id="topic-pill">Portada</span>
+    <span class="slide-num" id="slide-num">1 / 16</span>
+  </div>
+  <div class="tb-right"></div>
+</header>
+
+<div id="progress-line" style="width:0%"></div>
+
+<!-- ══ VIEWPORT ═════════════════════════════════════════ -->
+<div id="viewport">
+
+  <!-- ═══════════════════════════
+       01 — HERO
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-hero">
+    <div class="s-inner" style="display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:center;text-align:left;">
+
+      <!-- Columna izquierda (60%) -->
+      <div style="display:flex;flex-direction:column;align-items:center;text-align:center;">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(124,106,245,0.1);border:1px solid rgba(124,106,245,0.2);color:var(--accent2);padding:5px 14px;border-radius:100px;font-size:0.75rem;font-weight:600;margin-bottom:1.75rem;letter-spacing:0.05em;">
+          ✦ &nbsp; Guía Práctica · Anthropic
+        </div>
+        <h1 class="s-title xl" style="margin-bottom:0.4rem;">Claude Code</h1>
+        <h1 class="s-title xl grad" style="margin-bottom:1.5rem;">in Action</h1>
+        <p style="font-size:1.15rem;color:var(--text-muted);max-width:540px;line-height:1.65;margin-bottom:2rem;">
+          La guía completa del CLI de ingeniería de software con IA — en español.
+        </p>
+        <div style="background:var(--code-bg);border:1px solid rgba(124,106,245,0.25);border-radius:10px;padding:1rem 1.5rem;font-family:'JetBrains Mono',monospace;font-size:clamp(0.82rem,1.8vw,0.98rem);width:100%;max-width:520px;text-align:left;">
+          <span style="color:var(--accent);">❯ </span><span id="typewriter" style="color:var(--text-muted);"></span><span class="cursor">█</span>
+        </div>
+      </div>
+
+      <!-- Columna derecha (40%) — perfil de autor -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem;">
+
+        <!-- Foto circular con fallback a iniciales -->
+        <div style="position:relative;width:260px;height:260px;">
+          <img src="assets/christian.jpg"
+               alt="Christian Rodriguez"
+               style="width:260px;height:260px;border-radius:50%;object-fit:cover;border:3px solid rgba(124,106,245,0.5);"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+          <div style="display:none;width:260px;height:260px;border-radius:50%;
+                      background:linear-gradient(135deg,var(--accent2),var(--accent));
+                      align-items:center;justify-content:center;
+                      font-size:3.5rem;font-weight:800;color:#fff;
+                      border:3px solid rgba(124,106,245,0.5);
+                      font-family:'Inter',sans-serif;letter-spacing:-0.02em;">CR</div>
+        </div>
+
+        <!-- Nombre y rol -->
+        <div style="text-align:center;">
+          <div class="author-name" style="font-size:1.4rem;">Christian Rodriguez</div>
+          <div class="author-role" style="font-size:1rem;margin-top:0.3rem;">Sr. Software Engineer</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       02 — AGENDA
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-agenda">
+    <div class="s-inner">
+      <div class="s-eyebrow">Presentación</div>
+      <h2 class="s-title" style="margin-bottom:0.75rem;">Lo que cubriremos hoy</h2>
+      <p class="s-lead" style="margin-bottom:1.75rem;font-size:1rem;">14 temas esenciales para dominar Claude Code. Avanza con <kbd style="background:var(--card);border:1px solid var(--border2);padding:2px 7px;border-radius:4px;font-size:0.8rem;">→</kbd> o haz click en cualquier tema.</p>
+
+      <div class="agenda-grid">
+        <div class="agenda-item" data-slide="2" onclick="goTo(2)">
+          <div class="a-num">1</div>
+          <span class="a-title">¿Qué es Claude Code?</span>
+        </div>
+        <div class="agenda-item" data-slide="3" onclick="goTo(3)">
+          <div class="a-num">2</div>
+          <span class="a-title">Instalación</span>
+        </div>
+        <div class="agenda-item" data-slide="4" onclick="goTo(4)">
+          <div class="a-num">3</div>
+          <span class="a-title">Comandos Esenciales</span>
+        </div>
+        <div class="agenda-item" data-slide="5" onclick="goTo(5)">
+          <div class="a-num">4</div>
+          <span class="a-title">Comandos Personalizados</span>
+          <span class="a-tag">nuevo</span>
+        </div>
+        <div class="agenda-item" data-slide="6" onclick="goTo(6)">
+          <div class="a-num">5</div>
+          <span class="a-title">Flujo de Trabajo</span>
+        </div>
+        <div class="agenda-item" data-slide="7" onclick="goTo(7)">
+          <div class="a-num">6</div>
+          <span class="a-title">MCP — Model Context Protocol</span>
+        </div>
+        <div class="agenda-item" data-slide="8" onclick="goTo(8)">
+          <div class="a-num">7</div>
+          <span class="a-title">CLAUDE.md — Memoria</span>
+        </div>
+        <div class="agenda-item" data-slide="9" onclick="goTo(9)">
+          <div class="a-num">8</div>
+          <span class="a-title">Skills — SKILL.md</span>
+          <span class="a-tag">nuevo</span>
+        </div>
+        <div class="agenda-item" data-slide="10" onclick="goTo(10)">
+          <div class="a-num">9</div>
+          <span class="a-title">Plugins</span>
+          <span class="a-tag">nuevo</span>
+        </div>
+        <div class="agenda-item" data-slide="11" onclick="goTo(11)">
+          <div class="a-num">10</div>
+          <span class="a-title">Teams de Agentes</span>
+          <span class="a-tag">nuevo</span>
+        </div>
+        <div class="agenda-item" data-slide="12" onclick="goTo(12)">
+          <div class="a-num">11</div>
+          <span class="a-title">Hooks</span>
+        </div>
+        <div class="agenda-item" data-slide="13" onclick="goTo(13)">
+          <div class="a-num">12</div>
+          <span class="a-title">Permisos</span>
+        </div>
+        <div class="agenda-item" data-slide="14" onclick="goTo(14)">
+          <div class="a-num">13</div>
+          <span class="a-title">Mejores Prácticas</span>
+        </div>
+        <div class="agenda-item" data-slide="15" onclick="goTo(15)">
+          <div class="a-num">14</div>
+          <span class="a-title">Recursos</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       03 — QUÉ ES
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-que-es">
+    <div class="s-inner">
+      <div class="s-eyebrow">Overview</div>
+      <h2 class="s-title">¿Qué es Claude Code?</h2>
+      <p class="s-lead">
+        Un <strong style="color:var(--text);">agente de línea de comandos</strong> creado por Anthropic.<br/>
+        No es un chatbot — actúa, razona y ejecuta en tu codebase.
+      </p>
+
+      <div class="cards-row col-3" style="margin-bottom:1.5rem;">
+        <div class="card at">
+          <div class="card-icon">🧠</div>
+          <h3>Agente Autónomo</h3>
+          <p>Lee archivos, escribe código, ejecuta comandos y hace commits por ti.</p>
+        </div>
+        <div class="card at">
+          <div class="card-icon">🔧</div>
+          <h3>Integración Total</h3>
+          <p>Funciona con cualquier lenguaje, framework o herramienta en tu terminal.</p>
+        </div>
+        <div class="card at">
+          <div class="card-icon">🔌</div>
+          <h3>Extensible</h3>
+          <p>Conecta bases de datos, APIs y servicios via MCP. Automatiza con Hooks.</p>
+        </div>
+      </div>
+
+      <ul class="bullet-list" style="max-width:620px;margin:0 auto;">
+        <li>
+          <div class="bi">→</div>
+          <span>Lee y edita archivos, busca en el codebase, ejecuta tests</span>
+        </li>
+        <li>
+          <div class="bi">→</div>
+          <span>Hace commits, gestiona git, crea Pull Requests</span>
+        </li>
+        <li>
+          <div class="bi">→</div>
+          <span>Entiende el proyecto completo a través de <strong>CLAUDE.md</strong></span>
+        </li>
+        <li>
+          <div class="bi">→</div>
+          <span>Se integra en pipelines CI/CD en modo headless</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       04 — INSTALACIÓN
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-instalacion">
+    <div class="s-inner">
+      <div class="s-eyebrow">Setup · macOS</div>
+      <h2 class="s-title lg">Instalación en macOS</h2>
+      <p class="s-lead" style="font-size:1.05rem;margin-bottom:1.5rem;">
+        Instalador nativo — <strong style="color:var(--text);">sin Node.js</strong>. Se actualiza automáticamente en segundo plano.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:1.5rem;text-align:left;">
+
+        <!-- Columna izquierda: métodos de instalación -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <!-- Método 1: curl -->
+          <div class="card at2" style="padding:1.25rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.9rem;">
+              <span style="font-size:1.4rem;">⚡</span>
+              <h3 style="font-size:1rem;margin:0;">curl <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">— recomendado</span></h3>
+              <span style="font-size:0.7rem;background:rgba(62,207,207,0.12);color:var(--accent3);padding:3px 9px;border-radius:4px;margin-left:auto;">auto-update</span>
+            </div>
+            <div class="code-wrap" style="margin:0;">
+              <pre><code class="language-bash">curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+              <button class="copy-btn">Copiar</button>
+            </div>
+          </div>
+
+          <!-- Método 2: Homebrew -->
+          <div class="card at3" style="padding:1.25rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.9rem;">
+              <span style="font-size:1.4rem;">🍺</span>
+              <h3 style="font-size:1rem;margin:0;">Homebrew</h3>
+              <span style="font-size:0.7rem;background:rgba(255,152,0,0.12);color:var(--accent4);padding:3px 9px;border-radius:4px;margin-left:auto;">manual update</span>
+            </div>
+            <div class="code-wrap" style="margin:0;">
+              <pre><code class="language-bash">brew install --cask claude-code</code></pre>
+              <button class="copy-btn">Copiar</button>
+            </div>
+          </div>
+
+          <!-- Requisito -->
+          <div style="display:flex;align-items:center;gap:0.5rem;padding:0.7rem 1rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:8px;">
+            <span style="font-size:1rem;"></span>
+            <span style="font-size:0.82rem;color:var(--text-muted);">Requiere macOS <strong style="color:var(--text);">13.0 Ventura</strong> o superior</span>
+          </div>
+        </div>
+
+        <!-- Columna derecha: pasos post-instalación -->
+        <div style="display:flex;flex-direction:column;gap:0.9rem;">
+          <p style="font-size:0.78rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dim);margin:0 0 0.2rem;">Primeros pasos</p>
+
+          <div class="card" style="padding:1.1rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.7rem;">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;">1</div>
+              <h3 style="font-size:0.9rem;margin:0;">Autenticar</h3>
+            </div>
+            <div class="code-wrap" style="margin:0;">
+              <pre><code class="language-bash">claude
+# Login via browser
+# Plan Pro, Max o Teams</code></pre>
+              <button class="copy-btn">Copiar</button>
+            </div>
+          </div>
+
+          <div class="card" style="padding:1.1rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.7rem;">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;">2</div>
+              <h3 style="font-size:0.9rem;margin:0;">Inicializar</h3>
+            </div>
+            <div class="code-wrap" style="margin:0;">
+              <pre><code class="language-bash">cd mi-proyecto
+claude /init
+# Genera CLAUDE.md</code></pre>
+              <button class="copy-btn">Copiar</button>
+            </div>
+          </div>
+
+          <div class="card" style="padding:1.1rem;">
+            <div style="display:flex;align-items:center;gap:0.6rem;margin-bottom:0.7rem;">
+              <div style="width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--accent2),var(--accent));display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;flex-shrink:0;">3</div>
+              <h3 style="font-size:0.9rem;margin:0;">Verificar</h3>
+            </div>
+            <div class="code-wrap" style="margin:0;">
+              <pre><code class="language-bash">claude --version
+claude doctor
+# Diagnóstico del entorno</code></pre>
+              <button class="copy-btn">Copiar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       05 — COMANDOS ESENCIALES
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-comandos">
+    <div class="s-inner">
+      <div class="s-eyebrow">Reference</div>
+      <h2 class="s-title lg">Comandos Esenciales</h2>
+      <p class="s-lead" style="font-size:1.2rem;">Slash commands disponibles dentro de cualquier sesión.</p>
+
+      <div data-tabs>
+        <div class="tabs-bar">
+          <button class="tab-btn active">Sesión</button>
+          <button class="tab-btn">Proyecto</button>
+          <button class="tab-btn">Memoria</button>
+          <button class="tab-btn">CLI Flags</button>
+        </div>
+
+        <div class="tab-panel active">
+          <table class="data-table">
+            <thead><tr><th>Comando</th><th>Qué hace</th><th>Cuándo usarlo</th></tr></thead>
+            <tbody>
+              <tr><td class="c1">/help</td><td>Lista todos los comandos</td><td>Referencia rápida</td></tr>
+              <tr><td class="c1">/clear</td><td>Limpia el historial</td><td>Nueva tarea sin contexto previo</td></tr>
+              <tr><td class="c1">/compact</td><td>Comprime contexto</td><td>Sesiones muy largas</td></tr>
+              <tr><td class="c1">/undo</td><td>Revierte el último mensaje</td><td>Corregir una instrucción</td></tr>
+              <tr><td class="c1">/exit</td><td>Sale de Claude Code</td><td>Terminar sesión</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-panel">
+          <table class="data-table">
+            <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td class="c1">/init</td><td>Genera CLAUDE.md del proyecto</td></tr>
+              <tr><td class="c1">/review</td><td>Revisa el diff actual de git</td></tr>
+              <tr><td class="c1">/pr-comments</td><td>Muestra comentarios del PR activo</td></tr>
+              <tr><td class="c1">/terminal-setup</td><td>Configura el shell actual</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-panel">
+          <table class="data-table">
+            <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td class="c1">/memory</td><td>Ver la memoria del proyecto</td></tr>
+              <tr><td class="c1">/memory add</td><td>Agrega una nota a la memoria</td></tr>
+              <tr><td class="c1">/memory clear</td><td>Limpia la memoria guardada</td></tr>
+              <tr><td class="c1">/model</td><td>Cambia el modelo de Claude activo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-panel">
+          <div class="code-wrap">
+            <pre><code class="language-bash">claude --allowedTools "Bash,Read,Write"  # limitar herramientas
+claude --dangerously-skip-permissions    # sin confirmaciones (solo CI)
+claude --no-write                        # solo lectura
+claude --model claude-opus-4-5           # modelo específico
+claude -p "tarea" --output json          # output estructurado</code></pre>
+            <button class="copy-btn">Copiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       06 — COMANDOS PERSONALIZADOS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-custom-cmd">
+    <div class="s-inner">
+      <div class="s-eyebrow">Customization</div>
+      <h2 class="s-title">Comandos Personalizados</h2>
+      <p class="s-lead">
+        Crea tus propios <span class="cmd">/comandos</span> con archivos Markdown.<br/>
+        Reutilizables en todo el equipo, con soporte de argumentos.
+      </p>
+
+      <div class="cards-row col-2" style="margin-bottom:1.5rem;text-align:left;">
+        <div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.75rem;font-weight:500;">📁 Dónde colocarlos</p>
+          <div class="file-tree">
+            <span class="ft-dir">~/.claude/commands/</span><span class="ft-desc"> ← todos los proyectos</span><br/>
+            <span class="ft-in ft-file">deploy.md</span><span class="ft-desc">→ /deploy</span><br/>
+            <span class="ft-in ft-file">changelog.md</span><span class="ft-desc">→ /changelog</span><br/>
+            <br/>
+            <span class="ft-dir">.claude/commands/</span><span class="ft-desc"> ← solo este proyecto</span><br/>
+            <span class="ft-in ft-file">seed-db.md</span><span class="ft-desc">→ /seed-db</span><br/>
+            <span class="ft-in ft-file">security.md</span><span class="ft-desc">→ /security</span>
+          </div>
+        </div>
+        <div class="file-box">
+          <div class="file-titlebar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span class="file-name">.claude/commands/deploy.md</span>
+          </div>
+          <div class="file-body">
+            <span class="fh">---</span><br/>
+            <span class="fa">description</span><span class="ft">: Despliega a staging</span><br/>
+            <span class="fh">---</span><br/><br/>
+            <span class="fh"># Deploy a Staging</span><br/><br/>
+            <span class="ft">1. Ejecuta </span><span class="fv">npm test</span><span class="ft"> — si falla, detente</span><br/>
+            <span class="ft">2. Corre </span><span class="fv">npm run build</span><br/>
+            <span class="ft">3. Lanza </span><span class="fv">vercel deploy --prod</span><br/>
+            <span class="ft">4. Reporta la URL generada</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:left;width:100%;">
+        <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:0.6rem;font-weight:500;">⚡ Con argumentos — <span class="cmd">$ARGUMENTS</span> se reemplaza por lo que escribas</p>
+        <div class="code-wrap">
+          <pre><code class="language-bash"># .claude/commands/explain.md → /explain src/auth/middleware.ts
+Explica en detalle: $ARGUMENTS
+Incluye propósito, parámetros, casos borde y mejoras posibles.
+
+# Uso:
+/explain src/controllers/UserController.ts</code></pre>
+          <button class="copy-btn">Copiar</button>
+        </div>
+      </div>
+
+      <div class="cards-row col-3" style="margin-top:1rem;">
+        <div class="card at">
+          <div class="hook-tag" style="background:rgba(124,106,245,0.1);color:var(--accent2);">/changelog</div>
+          <p>Genera notas de versión desde commits de git</p>
+        </div>
+        <div class="card at3">
+          <div class="hook-tag" style="background:rgba(62,207,207,0.1);color:var(--accent3);">/pr-draft</div>
+          <p>Crea borrador de PR con descripción automática</p>
+        </div>
+        <div class="card at2">
+          <div class="hook-tag">/security-check</div>
+          <p>Analiza vulnerabilidades OWASP en el código</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       07 — WORKFLOW
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-workflow">
+    <div class="s-inner">
+      <div class="s-eyebrow">Process</div>
+      <h2 class="s-title">Flujo de Trabajo</h2>
+      <p class="s-lead">
+        Describe → Claude lee → actúa → iteras.<br/>
+        Como un ingeniero senior en tu terminal.
+      </p>
+
+      <div class="cards-row col-4" style="margin-bottom:1.5rem;">
+        <div class="card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">💬</div>
+          <h3>1. Describir</h3>
+          <p>Tarea en lenguaje natural con contexto específico</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🔍</div>
+          <h3>2. Analizar</h3>
+          <p>Lee archivos, entiende el contexto, formula un plan</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">⚙️</div>
+          <h3>3. Actuar</h3>
+          <p>Edita, ejecuta tests, hace commits</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">🔄</div>
+          <h3>4. Iterar</h3>
+          <p>Feedback en el mismo chat, ajusta sin perder contexto</p>
+        </div>
+      </div>
+
+      <div class="code-wrap" style="width:100%;text-align:left;">
+        <pre><code class="language-bash"># Ejemplo completo de sesión
+claude "el endpoint POST /users falla con 500 cuando el email ya existe. Manéjalo con status 409"
+
+# Claude: lee UserController.ts → identifica el bug
+#         modifica el código → corre los tests
+#         todo verde ✓
+
+/review   # revisa el diff antes de commitear
+"crea un commit semántico para estos cambios"</code></pre>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       08 — MCP
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-mcp">
+    <div class="s-inner">
+      <div class="s-eyebrow">Extensions</div>
+      <h2 class="s-title">Model Context Protocol</h2>
+      <p class="s-lead">
+        Estándar abierto de Anthropic para conectar Claude<br/>
+        con <strong style="color:var(--text);">cualquier herramienta o servicio externo</strong>.
+      </p>
+
+      <div class="diagram">
+        <div class="diag-box"><div class="di">🗄️</div><div class="dl">PostgreSQL</div></div>
+        <div class="diag-arrow">⇌</div>
+        <div class="diag-box"><div class="di">🔌</div><div class="dl">MCP Server</div></div>
+        <div class="diag-arrow">⇌</div>
+        <div class="diag-box hub"><div class="di">⚡</div><div class="dl" style="color:var(--text);font-weight:700;font-size:0.85rem;">Claude Code</div></div>
+        <div class="diag-arrow">⇌</div>
+        <div class="diag-box"><div class="di">🔌</div><div class="dl">MCP Server</div></div>
+        <div class="diag-arrow">⇌</div>
+        <div class="diag-box"><div class="di">🐙</div><div class="dl">GitHub</div></div>
+      </div>
+
+      <div class="cards-row col-4" style="margin-bottom:1rem;">
+        <div class="card at" style="text-align:center;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🐘</div>
+          <h3 style="font-size:0.88rem;">PostgreSQL</h3>
+          <p>Consultas SQL directas</p>
+        </div>
+        <div class="card at" style="text-align:center;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🐙</div>
+          <h3 style="font-size:0.88rem;">GitHub</h3>
+          <p>Issues, PRs, repos</p>
+        </div>
+        <div class="card at" style="text-align:center;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🌐</div>
+          <h3 style="font-size:0.88rem;">Browser</h3>
+          <p>Navegar y scrapear web</p>
+        </div>
+        <div class="card at" style="text-align:center;">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">📮</div>
+          <h3 style="font-size:0.88rem;">Slack</h3>
+          <p>Mensajes y canales</p>
+        </div>
+      </div>
+
+      <div class="code-wrap" style="width:100%;text-align:left;">
+        <pre><code class="language-bash">claude mcp add filesystem -- \ npx -y @modelcontextprotocol/server-filesystem /mi/dir
+
+claude mcp list    # ver servidores activos
+/mcp               # gestionar dentro de sesión</code></pre>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       09 — MEMORIA
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-memoria">
+    <div class="s-inner">
+      <div class="s-eyebrow">Context</div>
+      <h2 class="s-title">CLAUDE.md</h2>
+      <p class="s-lead">
+        Claude lo lee automáticamente en cada sesión.<br/>
+        Es el contexto permanente de tu proyecto.
+      </p>
+
+      <div class="cards-row col-2">
+        <div style="display:flex;flex-direction:column;gap:1rem;text-align:left;">
+          <div class="card">
+            <h3 style="margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-muted);">📂 Jerarquía</h3>
+            <div class="code-wrap">
+              <pre style="font-size:0.78rem;"><code class="language-bash">~/.claude/CLAUDE.md    # todos los proyectos
+./CLAUDE.md            # proyecto raíz
+./src/CLAUDE.md        # subdirectorio</code></pre>
+              <button class="copy-btn">Copiar</button>
+            </div>
+          </div>
+          <div class="card">
+            <h3 style="margin-bottom:0.75rem;font-size:0.9rem;color:var(--text-muted);">💡 Qué incluir</h3>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:0.45rem;">
+              <li style="font-size:0.85rem;color:var(--text-muted);display:flex;gap:0.5rem;"><span style="color:var(--accent3);">→</span> Stack y versiones</li>
+              <li style="font-size:0.85rem;color:var(--text-muted);display:flex;gap:0.5rem;"><span style="color:var(--accent3);">→</span> Comandos de build y test</li>
+              <li style="font-size:0.85rem;color:var(--text-muted);display:flex;gap:0.5rem;"><span style="color:var(--accent3);">→</span> Convenciones del equipo</li>
+              <li style="font-size:0.85rem;color:var(--text-muted);display:flex;gap:0.5rem;"><span style="color:var(--accent3);">→</span> Qué NO modificar</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="file-box">
+          <div class="file-titlebar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span class="file-name">CLAUDE.md</span>
+          </div>
+          <div class="file-body">
+            <span class="fh"># API de Usuarios</span><br/><br/>
+            <span class="fh">## Stack</span><br/>
+            <span class="ft">- Node.js 20 + TypeScript 5</span><br/>
+            <span class="ft">- Express + Prisma + PostgreSQL</span><br/>
+            <span class="ft">- Tests: Vitest + Supertest</span><br/><br/>
+            <span class="fh">## Comandos</span><br/>
+            <span class="fv">npm run dev</span><span class="ft">   # desarrollo</span><br/>
+            <span class="fv">npm test</span><span class="ft">      # tests</span><br/>
+            <span class="fv">npm run build</span><span class="ft"> # compilar</span><br/><br/>
+            <span class="fh">## Convenciones</span><br/>
+            <span class="ft">- Variables en camelCase</span><br/>
+            <span class="ft">- Errores con clase AppError</span><br/><br/>
+            <span class="fh">## ⚠ NO modificar</span><br/>
+            <span class="fc"># /src/generated/ (auto-generado)</span><br/>
+            <span class="fc"># Tests deben pasar antes de commit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       10 — SKILLS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-skills">
+    <div class="s-inner">
+      <div class="s-eyebrow">Automatización · Skills</div>
+      <h2 class="s-title lg">SKILL.md</h2>
+      <p class="s-lead">
+        Comandos reutilizables que Claude ejecuta con <strong style="color:var(--text);">/skill-name</strong>.
+        Define el prompt una vez, invócalo siempre.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:1.5rem;margin-bottom:1.25rem;text-align:left;width:100%;">
+
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <p style="font-size:0.85rem;color:var(--text-muted);margin:0;font-weight:500;">📂 Dónde colocarlos</p>
+          <div class="file-tree">
+            <span class="ft-dir">~/.claude/skills/</span><span class="ft-desc"> ← global</span><br/>
+            <span class="ft-in ft-file">commit.md</span><span class="ft-desc">→ /commit</span><br/>
+            <span class="ft-in ft-file">review-pr.md</span><span class="ft-desc">→ /review-pr</span><br/>
+            <br/>
+            <span class="ft-dir">.claude/skills/</span><span class="ft-desc"> ← proyecto</span><br/>
+            <span class="ft-in ft-file">seed-db.md</span><span class="ft-desc">→ /seed-db</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+            <div class="card at" style="padding:1rem;">
+              <div style="font-size:1.3rem;margin-bottom:0.4rem;">⚡</div>
+              <h3 style="font-size:0.85rem;">Invocación directa</h3>
+              <p style="font-size:0.8rem;">Escribe <strong>/skill-name</strong> en cualquier sesión de Claude</p>
+            </div>
+            <div class="card at3" style="padding:1rem;">
+              <div style="font-size:1.3rem;margin-bottom:0.4rem;">🔁</div>
+              <h3 style="font-size:0.85rem;">Compartible</h3>
+              <p style="font-size:0.8rem;">Versiona los <code>.md</code> junto al repo del proyecto</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-box">
+          <div class="file-titlebar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span class="file-name">~/.claude/skills/commit.md</span>
+          </div>
+          <div class="file-body">
+            <span class="fh">---</span><br/>
+            <span class="fa">name</span><span class="ft">: commit</span><br/>
+            <span class="fa">description</span><span class="ft">: Crea un commit semántico</span><br/>
+            <span class="fh">---</span><br/><br/>
+            <span class="fh"># Crear Commit Semántico</span><br/><br/>
+            <span class="ft">Analiza los cambios en staging y crea</span><br/>
+            <span class="ft">un commit siguiendo Conventional Commits:</span><br/><br/>
+            <span class="fv">1.</span><span class="ft"> Ejecuta </span><span class="fv">git diff --cached</span><br/>
+            <span class="fv">2.</span><span class="ft"> Determina tipo: </span><span class="fv">feat/fix/chore/docs</span><br/>
+            <span class="fv">3.</span><span class="ft"> Escribe mensaje conciso en inglés</span><br/>
+            <span class="fv">4.</span><span class="ft"> Incluye </span><span class="fv">Co-Authored-By</span><span class="ft"> si aplica</span><br/><br/>
+            <span class="fc"># Uso: /commit</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:left;width:100%;">
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;font-weight:500;">⚡ Instalación e invocación</p>
+        <div class="code-wrap">
+          <pre><code class="language-bash"># Crear skill global
+mkdir -p ~/.claude/skills && cat > ~/.claude/skills/commit.md << 'EOF'
+---
+name: commit
+description: Crea un commit semántico siguiendo Conventional Commits
+---
+Analiza git diff --cached y genera el commit apropiado.
+EOF
+
+# Invocar dentro de una sesión de Claude Code
+/commit       # ejecuta el skill "commit"
+/review-pr    # ejecuta el skill "review-pr"
+/seed-db      # skill local del proyecto</code></pre>
+          <button class="copy-btn">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       11 — PLUGINS / SKILLS PACKS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-plugins">
+    <div class="s-inner">
+      <div class="s-eyebrow">Extensibilidad · Plugins</div>
+      <h2 class="s-title lg">Plugins</h2>
+      <p class="s-lead">
+        Instala paquetes de skills desde repositorios externos para compartir
+        automatizaciones entre proyectos y equipos.
+      </p>
+
+      <!-- Fila 1: 4 packs uniformes -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem;width:100%;">
+        <div class="card at" style="padding:1.1rem;text-align:center;">
+          <div style="font-size:1.6rem;margin-bottom:0.5rem;">🚀</div>
+          <h3 style="font-size:0.88rem;margin-bottom:0.4rem;">DevOps Pack</h3>
+          <p style="font-size:0.8rem;color:var(--text-muted);">/deploy · /rollback<br/>/logs · /monitor</p>
+        </div>
+        <div class="card at4" style="padding:1.1rem;text-align:center;">
+          <div style="font-size:1.6rem;margin-bottom:0.5rem;">🧪</div>
+          <h3 style="font-size:0.88rem;margin-bottom:0.4rem;">QA Pack</h3>
+          <p style="font-size:0.8rem;color:var(--text-muted);">/test-coverage · /e2e<br/>/snapshot · /lint</p>
+        </div>
+        <div class="card at3" style="padding:1.1rem;text-align:center;">
+          <div style="font-size:1.6rem;margin-bottom:0.5rem;">📝</div>
+          <h3 style="font-size:0.88rem;margin-bottom:0.4rem;">Docs Pack</h3>
+          <p style="font-size:0.8rem;color:var(--text-muted);">/changelog · /readme<br/>/jsdoc · /adr</p>
+        </div>
+        <div class="card at2" style="padding:1.1rem;text-align:center;">
+          <div style="font-size:1.6rem;margin-bottom:0.5rem;">🔒</div>
+          <h3 style="font-size:0.88rem;margin-bottom:0.4rem;">Security Pack</h3>
+          <p style="font-size:0.8rem;color:var(--text-muted);">/audit · /secrets-check<br/>/owasp · /sbom</p>
+        </div>
+      </div>
+
+      <!-- Fila 2: instalación + estructura equipo + prioridad -->
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:1.25rem;width:100%;text-align:left;">
+        <div class="code-wrap" style="margin:0;">
+          <div style="font-size:0.68rem;color:var(--accent2);font-family:'JetBrains Mono',monospace;padding:0.35rem 0.5rem 0;letter-spacing:0.05em;font-weight:600;">📦 Instalar colección desde repositorio</div>
+          <pre><code class="language-bash"># Clonar colección de skills de la comunidad
+git clone https://github.com/org/claude-skills /tmp/skills
+
+# Instalar globalmente (todos los proyectos)
+cp /tmp/skills/*.md ~/.claude/skills/
+
+# O solo para este proyecto
+cp /tmp/skills/backend/*.md .claude/skills/
+
+# Ver skills disponibles en la sesión
+ls ~/.claude/skills/</code></pre>
+          <button class="copy-btn">Copiar</button>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+          <div class="card at3" style="padding:1.1rem;">
+            <h3 style="font-size:0.88rem;margin-bottom:0.6rem;">🔗 Compartir en equipo via git</h3>
+            <div class="file-tree">
+              <span class="ft-dir">.claude/skills/</span><span class="ft-desc"> ← commitear</span><br/>
+              <span class="ft-in ft-file">commit.md</span><span class="ft-desc">→ /commit</span><br/>
+              <span class="ft-in ft-file">review-pr.md</span><span class="ft-desc">→ /review-pr</span><br/>
+              <span class="ft-in ft-file">deploy.md</span><span class="ft-desc">→ /deploy</span>
+            </div>
+          </div>
+          <div class="card" style="padding:1.1rem;">
+            <h3 style="font-size:0.88rem;margin-bottom:0.5rem;">⚡ Prioridad de carga</h3>
+            <ul style="list-style:none;display:flex;flex-direction:column;gap:0.35rem;">
+              <li style="font-size:0.82rem;display:flex;gap:0.5rem;align-items:center;"><span style="color:var(--accent2);font-weight:700;">1.</span><code>.claude/skills/</code> proyecto</li>
+              <li style="font-size:0.82rem;display:flex;gap:0.5rem;align-items:center;"><span style="color:var(--accent3);font-weight:700;">2.</span><code>~/.claude/skills/</code> global</li>
+              <li style="font-size:0.82rem;display:flex;gap:0.5rem;align-items:center;"><span style="color:var(--text-muted);font-weight:700;">3.</span>Built-in de Claude Code</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       12 — SUBAGENTES
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-agentes">
+    <div class="s-inner">
+      <div class="s-eyebrow">Multi-Agent · CLI</div>
+      <h2 class="s-title lg">Subagentes</h2>
+      <p class="s-lead" style="margin-bottom:1rem;">
+        Claude Code lanza <strong style="color:var(--text);">subagentes especializados</strong> en worktrees aislados.
+        Cada subagente tiene su propio contexto, herramientas y permisos — sin interferir entre sí.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:1.5rem;width:100%;text-align:left;">
+
+        <!-- Izquierda: diagrama vertical + beneficios -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.4rem;">
+            <div class="diag-box hub" style="width:100%;text-align:center;">
+              <div class="di">⚡</div>
+              <div class="dl" style="color:var(--text);font-weight:700;">Claude Code CLI</div>
+              <div class="dl" style="font-size:0.72rem;color:var(--text-muted);">orquestador principal</div>
+            </div>
+            <div style="color:var(--text-muted);font-size:1rem;">↓ &nbsp; lanza subagentes</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.4rem;width:100%;">
+              <div class="diag-box" style="border-top:3px solid var(--accent);text-align:center;padding:0.6rem 0.4rem;">
+                <div class="di" style="font-size:0.9rem;">🔍</div>
+                <div class="dl" style="color:var(--accent);font-size:0.72rem;font-weight:600;">Explore</div>
+              </div>
+              <div class="diag-box" style="border-top:3px solid var(--accent2);text-align:center;padding:0.6rem 0.4rem;">
+                <div class="di" style="font-size:0.9rem;">📋</div>
+                <div class="dl" style="color:var(--accent2);font-size:0.72rem;font-weight:600;">Plan</div>
+              </div>
+              <div class="diag-box" style="border-top:3px solid var(--accent4);text-align:center;padding:0.6rem 0.4rem;">
+                <div class="di" style="font-size:0.9rem;">⚙️</div>
+                <div class="dl" style="color:var(--accent4);font-size:0.72rem;font-weight:600;">Execute</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;">
+            <div class="card at2" style="padding:0.85rem;">
+              <div style="font-size:1rem;margin-bottom:0.3rem;">⚡</div>
+              <h3 style="font-size:0.82rem;">Paralelo</h3>
+              <p style="font-size:0.78rem;">Corren simultáneamente sin bloquearse.</p>
+            </div>
+            <div class="card at3" style="padding:0.85rem;">
+              <div style="font-size:1rem;margin-bottom:0.3rem;">🔒</div>
+              <h3 style="font-size:0.82rem;">Aislado</h3>
+              <p style="font-size:0.78rem;">Git worktree propio por subagente.</p>
+            </div>
+            <div class="card at4" style="padding:0.85rem;">
+              <div style="font-size:1rem;margin-bottom:0.3rem;">🎯</div>
+              <h3 style="font-size:0.82rem;">Especializado</h3>
+              <p style="font-size:0.78rem;">Cada uno con su rol y CLAUDE.md.</p>
+            </div>
+            <div class="card at" style="padding:0.85rem;">
+              <div style="font-size:1rem;margin-bottom:0.3rem;">♾️</div>
+              <h3 style="font-size:0.82rem;">Sin límite</h3>
+              <p style="font-size:0.78rem;">Tareas distribuidas en N agentes.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Derecha: ejemplos CLI -->
+        <div style="display:flex;flex-direction:column;gap:0.85rem;">
+          <div class="code-wrap" style="margin:0;">
+            <div style="font-size:0.68rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;padding:0.35rem 0.5rem 0;letter-spacing:0.05em;">INTERACTIVO — sesión normal</div>
+            <pre><code class="language-bash"># Claude lanza subagentes automáticamente
+# al detectar tareas complejas o paralelas
+claude
+
+> "Refactoriza el módulo auth y en paralelo
+   genera los tests unitarios"
+
+# Claude Code internamente:
+# → Subagente 1 (worktree-1): refactoriza auth/
+# → Subagente 2 (worktree-2): genera tests/auth/
+# → Orquestador: fusiona resultados y resuelve conflictos</code></pre>
+            <button class="copy-btn">Copiar</button>
+          </div>
+
+          <div class="code-wrap" style="margin:0;">
+            <div style="font-size:0.68rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;padding:0.35rem 0.5rem 0;letter-spacing:0.05em;">HEADLESS — CI/CD sin intervención</div>
+            <pre><code class="language-bash"># Modo no-interactivo para pipelines
+claude --dangerously-skip-permissions \
+  -p "implementa el feature #247 con tests y PR"
+
+# Flags útiles para subagentes en CI:
+# --max-turns 50        limitar iteraciones
+# --output-format json  parsear resultado
+# --model claude-opus-4-5  modelo específico
+
+# Cada subagente hereda permisos del orquestador
+# y puede lanzar sus propios sub-subagentes</code></pre>
+            <button class="copy-btn">Copiar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       13 — HOOKS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-hooks">
+    <div class="s-inner">
+      <div class="s-eyebrow">Automation</div>
+      <h2 class="s-title">Hooks</h2>
+      <p class="s-lead">
+        Scripts que se ejecutan automáticamente<br/>
+        antes y después de cada acción de Claude.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;width:100%;text-align:left;">
+
+        <!-- Columna PreToolUse -->
+        <div style="display:flex;flex-direction:column;gap:0.9rem;">
+          <div class="card at" style="padding:1.25rem;">
+            <div class="hook-tag" style="margin-bottom:0.75rem;">PreToolUse</div>
+            <h3 style="margin-bottom:0.5rem;">Antes de actuar</h3>
+            <p>Ejecuta <strong style="color:var(--text);">antes</strong> de Bash, Write, Edit. Un exit code ≠ 0 <strong style="color:var(--text);">bloquea</strong> la acción por completo.</p>
+            <div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
+              <span style="font-size:0.75rem;background:rgba(224,92,122,0.1);color:var(--accent);padding:2px 8px;border-radius:4px;">Bash</span>
+              <span style="font-size:0.75rem;background:rgba(224,92,122,0.1);color:var(--accent);padding:2px 8px;border-radius:4px;">Write</span>
+              <span style="font-size:0.75rem;background:rgba(224,92,122,0.1);color:var(--accent);padding:2px 8px;border-radius:4px;">Edit</span>
+              <span style="font-size:0.75rem;background:rgba(224,92,122,0.1);color:var(--accent);padding:2px 8px;border-radius:4px;">WebFetch</span>
+            </div>
+          </div>
+          <div class="code-wrap" style="margin:0;flex:1;">
+            <div style="font-size:0.68rem;color:var(--accent);font-family:'JetBrains Mono',monospace;padding:0.35rem 0.5rem 0;letter-spacing:0.05em;font-weight:600;">bloquear comandos peligrosos</div>
+            <pre><code class="language-bash">// ~/.claude/settings.json
+{
+  "hooks": {
+    "PreToolUse": [{
+      "matcher": "Bash",
+      "hooks": [{ "type": "command",
+        "command": "bash ~/.claude/guard.sh"
+      }]
+    }]
+  }
+}
+
+// guard.sh — exit 1 bloquea la acción
+if echo "$CLAUDE_TOOL_INPUT" | grep -qE \
+  "rm -rf|drop table|push --force"; then
+  echo "Comando bloqueado por política"; exit 1
+fi</code></pre>
+            <button class="copy-btn">Copiar</button>
+          </div>
+        </div>
+
+        <!-- Columna PostToolUse -->
+        <div style="display:flex;flex-direction:column;gap:0.9rem;">
+          <div class="card at3" style="padding:1.25rem;">
+            <div class="hook-tag" style="margin-bottom:0.75rem;background:rgba(62,207,207,0.1);color:var(--accent3);">PostToolUse</div>
+            <h3 style="margin-bottom:0.5rem;">Después de actuar</h3>
+            <p>Ejecuta <strong style="color:var(--text);">después</strong> de cada herramienta. Ideal para <strong style="color:var(--text);">formateo, tests, logs</strong> y notificaciones segun sea el caso necesario.</p>
+            <div style="margin-top:0.75rem;display:flex;flex-wrap:wrap;gap:0.4rem;">
+              <span style="font-size:0.75rem;background:rgba(62,207,207,0.1);color:var(--accent3);padding:2px 8px;border-radius:4px;">Prettier</span>
+              <span style="font-size:0.75rem;background:rgba(62,207,207,0.1);color:var(--accent3);padding:2px 8px;border-radius:4px;">ESLint</span>
+              <span style="font-size:0.75rem;background:rgba(62,207,207,0.1);color:var(--accent3);padding:2px 8px;border-radius:4px;">Tests</span>
+              <span style="font-size:0.75rem;background:rgba(62,207,207,0.1);color:var(--accent3);padding:2px 8px;border-radius:4px;">Slack</span>
+            </div>
+          </div>
+          <div class="code-wrap" style="margin:0;flex:1;">
+            <div style="font-size:0.68rem;color:var(--accent3);font-family:'JetBrains Mono',monospace;padding:0.35rem 0.5rem 0;letter-spacing:0.05em;font-weight:600;">formatear al guardar</div>
+            <pre><code class="language-bash">// ~/.claude/settings.json
+{
+  "hooks": {
+    "PostToolUse": [{
+      "matcher": "Write|Edit",
+      "hooks": [{ "type": "command",
+        "command": "npx prettier --write \"$CLAUDE_FILE_PATH\""
+      }]
+    }],
+    "Stop": [{
+      "hooks": [{ "type": "command",
+        "command": "osascript -e 'display notification \"Claude terminó\"'"
+      }]
+    }]
+  }
+}</code></pre>
+            <button class="copy-btn">Copiar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       11 — PERMISOS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-permisos">
+    <div class="s-inner">
+      <div class="s-eyebrow">Security</div>
+      <h2 class="s-title">Sistema de Permisos</h2>
+      <p class="s-lead">
+        Tú controlas qué puede y qué no puede hacer Claude.<br/>
+        Configurable por proyecto o globalmente.
+      </p>
+
+      <div class="cards-row col-2" style="margin-bottom:1.25rem;text-align:left;">
+        <div class="card at3">
+          <h3 style="color:var(--accent3);margin-bottom:0.75rem;">✓ Permitido por defecto</h3>
+          <ul class="perm-list allow">
+            <li>Leer archivos del proyecto</li>
+            <li>Buscar en el codebase</li>
+            <li>Ejecutar git status / diff</li>
+            <li>Crear archivos nuevos</li>
+            <li>Correr tests</li>
+          </ul>
+        </div>
+        <div class="card at2">
+          <h3 style="color:var(--accent);margin-bottom:0.75rem;">⚠ Requiere confirmación</h3>
+          <ul class="perm-list deny">
+            <li>Modificar archivos existentes</li>
+            <li>git commit / git push</li>
+            <li>Instalar dependencias</li>
+            <li>Eliminar archivos</li>
+            <li>Acceso a red externa</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="code-wrap" style="max-width:600px;margin:0 auto;text-align:left;">
+        <pre><code class="language-json">// ~/.claude/settings.json — lista allow / deny
+{
+  "permissions": {
+    "allow": ["Bash(npm test)", "Bash(npm run lint)", "Write(src/**)"],
+    "deny":  ["Bash(rm -rf*)", "Bash(git push --force)"]
+  }
+}</code></pre>
+        <button class="copy-btn">Copiar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       12 — MEJORES PRÁCTICAS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-practicas">
+    <div class="s-inner">
+      <div class="s-eyebrow">Best Practices</div>
+      <h2 class="s-title">Mejores Prácticas</h2>
+      <p class="s-lead">Lo más importante de la certificación de Anthropic.</p>
+
+      <ul class="bullet-list" style="max-width:680px;margin:0 auto;text-align:left;">
+        <li>
+          <div class="bi">1</div>
+          <span><strong>Contexto específico</strong> — menciona archivo, función y comportamiento esperado. Evita "arregla los bugs".</span>
+        </li>
+        <li>
+          <div class="bi">2</div>
+          <span><strong>CLAUDE.md actualizado</strong> — stack, comandos, convenciones y qué NO modificar.</span>
+        </li>
+        <li>
+          <div class="bi">3</div>
+          <span><strong>Tareas atómicas</strong> — divide tareas grandes. Es más fácil verificar cambios pequeños.</span>
+        </li>
+        <li>
+          <div class="bi">4</div>
+          <span><strong>Usa /compact</strong> en sesiones largas para mantener eficiencia y reducir costos.</span>
+        </li>
+        <li>
+          <div class="bi">5</div>
+          <span><strong>Revisa con /review</strong> antes de confirmar. No apruebes ediciones masivas sin revisar.</span>
+        </li>
+        <li>
+          <div class="bi">6</div>
+          <span><strong>Comandos personalizados</strong> — crea <span class="cmd">/deploy</span>, <span class="cmd">/changelog</span>, <span class="cmd">/security</span> para flujos repetitivos del equipo.</span>
+        </li>
+        <li>
+          <div class="bi">7</div>
+          <span><strong>Hooks de calidad</strong> — formatea y valida automáticamente con PostToolUse.</span>
+        </li>
+        <li>
+          <div class="bi">8</div>
+          <span><strong>Headless en CI/CD</strong> — integra con <span class="cmd">claude -p "..." --output json</span> en pipelines.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       13 — RECURSOS
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-recursos">
+    <div class="s-inner">
+      <div class="s-eyebrow">Fin</div>
+      <h2 class="s-title" style="margin-bottom:0.75rem;">Recursos y Cierre</h2>
+      <p class="s-lead" style="font-size:1rem;margin-bottom:1.5rem;">Documentación oficial para seguir profundizando.</p>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem;width:100%;text-align:left;">
+        <a href="https://docs.anthropic.com/en/docs/claude-code/overview" target="_blank" style="text-decoration:none;color:inherit;" class="card at">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">📖</div>
+          <h3>Documentación Oficial</h3>
+          <p style="font-size:0.88rem;">Referencia completa: instalación, comandos, configuración y API.</p>
+          <div style="font-size:0.75rem;color:var(--accent2);margin-top:0.75rem;">docs.anthropic.com ↗</div>
+        </a>
+        <a href="https://modelcontextprotocol.io" target="_blank" style="text-decoration:none;color:inherit;" class="card at">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🔌</div>
+          <h3>Model Context Protocol</h3>
+          <p style="font-size:0.88rem;">Especificación y catálogo de servidores MCP disponibles.</p>
+          <div style="font-size:0.75rem;color:var(--accent2);margin-top:0.75rem;">modelcontextprotocol.io ↗</div>
+        </a>
+        <a href="https://docs.anthropic.com/en/docs/claude-code/tutorials" target="_blank" style="text-decoration:none;color:inherit;" class="card at">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🎓</div>
+          <h3>Tutoriales Oficiales</h3>
+          <p style="font-size:0.88rem;">Guías paso a paso: testing, refactoring, CI/CD y agentes.</p>
+          <div style="font-size:0.75rem;color:var(--accent2);margin-top:0.75rem;">docs.anthropic.com ↗</div>
+        </a>
+        <a href="https://github.com/anthropics/claude-code" target="_blank" style="text-decoration:none;color:inherit;" class="card at2">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🐙</div>
+          <h3>GitHub — Claude Code</h3>
+          <p style="font-size:0.88rem;">Código fuente, issues, releases y comunidad open source.</p>
+          <div style="font-size:0.75rem;color:var(--accent2);margin-top:0.75rem;">github.com/anthropics ↗</div>
+        </a>
+        <a href="https://www.anthropic.com/courses" target="_blank" style="text-decoration:none;color:inherit;" class="card at3">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🏅</div>
+          <h3>Cursos Anthropic</h3>
+          <p style="font-size:0.88rem;">Cursos oficiales: Prompt Engineering, Tool Use, RAG y desarrollo con Claude API.</p>
+          <div style="font-size:0.75rem;color:var(--accent3);margin-top:0.75rem;">anthropic.com/courses ↗</div>
+        </a>
+        <a href="https://www.anthropic.com/api" target="_blank" style="text-decoration:none;color:inherit;" class="card at4">
+          <div style="font-size:1.5rem;margin-bottom:0.5rem;">🎖️</div>
+          <h3>Anthropic API & Certificación</h3>
+          <p style="font-size:0.88rem;">Accede a la API, créditos gratuitos para desarrolladores y programa de certificación oficial.</p>
+          <div style="font-size:0.75rem;color:var(--accent4);margin-top:0.75rem;">anthropic.com/api ↗</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /viewport -->
+
+<!-- ══ BOTTOM NAV ═══════════════════════════════════════ -->
+<footer id="bottom-nav">
+  <button class="nav-btn" id="prev-btn" disabled>← Anterior</button>
+
+  <div class="nav-dots">
+    <div class="nav-dot active"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+  </div>
+
+  <button class="nav-btn primary" id="next-btn">Siguiente →</button>
+</footer>
+
+<script>hljs.highlightAll();</script>
+<script src="app.js"></script>
+</body>
+</html>
