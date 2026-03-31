@@ -87,7 +87,7 @@
     <div class="s-inner">
       <div class="s-eyebrow">Presentación</div>
       <h2 class="s-title" style="margin-bottom:0.75rem;">Lo que cubriremos hoy</h2>
-      <p class="s-lead" style="margin-bottom:1.75rem;font-size:1rem;">14 temas esenciales para dominar Claude Code. Avanza con <kbd style="background:var(--card);border:1px solid var(--border2);padding:2px 7px;border-radius:4px;font-size:0.8rem;">→</kbd> o haz click en cualquier tema.</p>
+      <p class="s-lead" style="margin-bottom:1.75rem;font-size:1rem;">15 temas esenciales para dominar Claude Code. Avanza con <kbd style="background:var(--card);border:1px solid var(--border2);padding:2px 7px;border-radius:4px;font-size:0.8rem;">→</kbd> o haz click en cualquier tema.</p>
 
       <div class="agenda-grid">
         <div class="agenda-item" data-slide="2" onclick="goTo(2)">
@@ -121,33 +121,38 @@
         </div>
         <div class="agenda-item" data-slide="9" onclick="goTo(9)">
           <div class="a-num">8</div>
-          <span class="a-title">Skills — SKILL.md</span>
+          <span class="a-title">Rules — CLAUDE.md</span>
           <span class="a-tag">nuevo</span>
         </div>
         <div class="agenda-item" data-slide="10" onclick="goTo(10)">
           <div class="a-num">9</div>
-          <span class="a-title">Plugins</span>
+          <span class="a-title">Skills — SKILL.md</span>
           <span class="a-tag">nuevo</span>
         </div>
         <div class="agenda-item" data-slide="11" onclick="goTo(11)">
           <div class="a-num">10</div>
-          <span class="a-title">Teams de Agentes</span>
+          <span class="a-title">Plugins</span>
           <span class="a-tag">nuevo</span>
         </div>
         <div class="agenda-item" data-slide="12" onclick="goTo(12)">
           <div class="a-num">11</div>
-          <span class="a-title">Hooks</span>
+          <span class="a-title">Teams de Agentes</span>
+          <span class="a-tag">nuevo</span>
         </div>
         <div class="agenda-item" data-slide="13" onclick="goTo(13)">
           <div class="a-num">12</div>
-          <span class="a-title">Permisos</span>
+          <span class="a-title">Hooks</span>
         </div>
         <div class="agenda-item" data-slide="14" onclick="goTo(14)">
           <div class="a-num">13</div>
-          <span class="a-title">Mejores Prácticas</span>
+          <span class="a-title">Permisos</span>
         </div>
         <div class="agenda-item" data-slide="15" onclick="goTo(15)">
           <div class="a-num">14</div>
+          <span class="a-title">Mejores Prácticas</span>
+        </div>
+        <div class="agenda-item" data-slide="16" onclick="goTo(16)">
+          <div class="a-num">15</div>
           <span class="a-title">Recursos</span>
         </div>
       </div>
@@ -608,7 +613,102 @@ claude mcp list    # ver servidores activos
   </div>
 
   <!-- ═══════════════════════════
-       10 — SKILLS
+       10 — RULES
+  ═══════════════════════════ -->
+  <div class="slide" id="slide-rules">
+    <div class="s-inner">
+      <div class="s-eyebrow">Behavior · Rules</div>
+      <h2 class="s-title lg">Rules</h2>
+      <p class="s-lead">
+        Directivas permanentes que <strong style="color:var(--text);">moldean el comportamiento</strong> de Claude.<br/>
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:1.5rem;margin-bottom:1.25rem;text-align:left;width:100%;">
+
+        <!-- Columna izquierda: dónde + tipos -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <p style="font-size:0.85rem;color:var(--text-muted);margin:0;font-weight:500;">📂 Dónde definirlas</p>
+          <div class="file-tree">
+            <span class="ft-dir">~/.claude/CLAUDE.md</span><span class="ft-desc"> ← global</span><br/>
+            <span class="ft-in ft-file">## Rules</span><span class="ft-desc">→ todos los proyectos</span><br/>
+            <br/>
+            <span class="ft-dir">./CLAUDE.md</span><span class="ft-desc"> ← proyecto</span><br/>
+            <span class="ft-in ft-file">## Rules</span><span class="ft-desc">→ solo este repo</span><br/>
+            <br/>
+            <span class="ft-dir">~/.claude/settings.json</span><br/>
+            <span class="ft-in ft-file">"rules": [...]</span><span class="ft-desc">→ JSON estructurado</span>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+            <div class="card at" style="padding:1rem;">
+              <div style="font-size:1.3rem;margin-bottom:0.4rem;">📝</div>
+              <h3 style="font-size:0.85rem;">Estilo de código</h3>
+              <p style="font-size:0.8rem;">Naming, formato, idioma de comentarios</p>
+            </div>
+            <div class="card at2" style="padding:1rem;">
+              <div style="font-size:1.3rem;margin-bottom:0.4rem;">🚫</div>
+              <h3 style="font-size:0.85rem;">Restricciones</h3>
+              <p style="font-size:0.8rem;">Archivos intocables, patrones prohibidos</p>
+            </div>
+            <div class="card at3" style="padding:1rem;">
+              <div style="font-size:1.3rem;margin-bottom:0.4rem;">🔄</div>
+              <h3 style="font-size:0.85rem;">Workflow</h3>
+              <p style="font-size:0.8rem;">Siempre testear, commitear semánticamente</p>
+            </div>
+            <div class="card at4" style="padding:1rem;">
+              <div style="font-size:1.3rem;margin-bottom:0.4rem;">🌐</div>
+              <h3 style="font-size:0.85rem;">Idioma</h3>
+              <p style="font-size:0.8rem;">Responder en español, docs en inglés</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna derecha: ejemplo en CLAUDE.md -->
+        <div class="file-box">
+          <div class="file-titlebar">
+            <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+            <span class="file-name">CLAUDE.md — sección Rules</span>
+          </div>
+          <div class="file-body">
+            <span class="fh">## Rules</span><br/><br/>
+            <span class="fc"># Estilo</span><br/>
+            <span class="ft">- Usa </span><span class="fv">camelCase</span><span class="ft"> para variables y funciones</span><br/>
+            <span class="ft">- Usa </span><span class="fv">PascalCase</span><span class="ft"> para clases e interfaces</span><br/>
+            <span class="ft">- Comentarios en </span><span class="fv">español</span><span class="ft">, código en inglés</span><br/><br/>
+            <span class="fc"># Testing</span><br/>
+            <span class="ft">- </span><span class="fv">Nunca</span><span class="ft"> hagas commit sin tests pasando</span><br/>
+            <span class="ft">- Mantén cobertura </span><span class="fv">> 80%</span><span class="ft"> en src/</span><br/><br/>
+            <span class="fc"># Archivos protegidos</span><br/>
+            <span class="ft">- </span><span class="fv">NO</span><span class="ft"> modificar </span><span class="fv">src/generated/</span><br/>
+            <span class="ft">- </span><span class="fv">NO</span><span class="ft"> tocar </span><span class="fv">.env</span><span class="ft"> ni </span><span class="fv">secrets/</span><br/><br/>
+            <span class="fc"># Git</span><br/>
+            <span class="ft">- Commits en formato </span><span class="fv">Conventional Commits</span><br/>
+            <span class="ft">- Una tarea = una rama = un PR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- settings.json rules -->
+      <div style="text-align:left;width:100%;">
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;font-weight:500;">⚙️ Rules en <code>settings.json</code> — control granular por herramienta</p>
+        <div class="code-wrap">
+          <pre><code class="language-json">// ~/.claude/settings.json
+{
+  "rules": [
+    "Responde siempre en español",
+    "Usa TypeScript strict mode en todo código nuevo",
+    "Nunca uses console.log — usa el logger de la app",
+    "Antes de editar un archivo, léelo completo"
+  ]
+}</code></pre>
+          <button class="copy-btn">Copiar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════
+       11 — SKILLS
   ═══════════════════════════ -->
   <div class="slide" id="slide-skills">
     <div class="s-inner">
@@ -838,8 +938,7 @@ ls ~/.claude/skills/</code></pre>
 # al detectar tareas complejas o paralelas
 claude
 
-> "Refactoriza el módulo auth y en paralelo
-   genera los tests unitarios"
+> "Refactoriza el módulo auth y en paralelo genera los tests unitarios"
 
 # Claude Code internamente:
 # → Subagente 1 (worktree-1): refactoriza auth/
@@ -851,8 +950,7 @@ claude
           <div class="code-wrap" style="margin:0;">
             <div style="font-size:0.68rem;color:var(--text-dim);font-family:'JetBrains Mono',monospace;padding:0.35rem 0.5rem 0;letter-spacing:0.05em;">HEADLESS — CI/CD sin intervención</div>
             <pre><code class="language-bash"># Modo no-interactivo para pipelines
-claude --dangerously-skip-permissions \
-  -p "implementa el feature #247 con tests y PR"
+claude --dangerously-skip-permissions \ -p "implementa el feature #247 con tests y PR"
 
 # Flags útiles para subagentes en CI:
 # --max-turns 50        limitar iteraciones
@@ -1109,6 +1207,7 @@ fi</code></pre>
 
   <div class="nav-dots">
     <div class="nav-dot active"></div>
+    <div class="nav-dot"></div>
     <div class="nav-dot"></div>
     <div class="nav-dot"></div>
     <div class="nav-dot"></div>

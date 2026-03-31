@@ -13,6 +13,7 @@ const SLIDES = [
   { id: 'workflow',   title: 'Flujo de Trabajo' },
   { id: 'mcp',        title: 'MCP' },
   { id: 'memoria',    title: 'CLAUDE.md — Memoria' },
+  { id: 'rules',      title: 'Rules — CLAUDE.md' },
   { id: 'skills',     title: 'Skills — SKILL.md' },
   { id: 'plugins',    title: 'Plugins' },
   { id: 'agentes',    title: 'Teams de Agentes' },
