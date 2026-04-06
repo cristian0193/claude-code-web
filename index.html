@@ -313,59 +313,133 @@ claude doctor
     <div class="s-inner">
       <div class="s-eyebrow">Reference</div>
       <h2 class="s-title lg">Comandos Esenciales</h2>
-      <p class="s-lead" style="font-size:1.2rem;">Slash commands disponibles dentro de cualquier sesión.</p>
+      <p class="s-lead" style="font-size:1.1rem;">Todos los slash commands, flags CLI y atajos de Claude Code.</p>
 
       <div data-tabs>
         <div class="tabs-bar">
-          <button class="tab-btn active">Sesión</button>
-          <button class="tab-btn">Proyecto</button>
-          <button class="tab-btn">Memoria</button>
+          <button class="tab-btn active">Proyecto</button>
+          <button class="tab-btn">Estado</button>
+          <button class="tab-btn">Sesión</button>
+          <button class="tab-btn">Herramientas</button>
           <button class="tab-btn">CLI Flags</button>
+          <button class="tab-btn">Atajos</button>
         </div>
 
+        <!-- TAB 1: Proyecto -->
         <div class="tab-panel active">
           <table class="data-table">
-            <thead><tr><th>Comando</th><th>Qué hace</th><th>Cuándo usarlo</th></tr></thead>
-            <tbody>
-              <tr><td class="c1">/help</td><td>Lista todos los comandos</td><td>Referencia rápida</td></tr>
-              <tr><td class="c1">/clear</td><td>Limpia el historial</td><td>Nueva tarea sin contexto previo</td></tr>
-              <tr><td class="c1">/compact</td><td>Comprime contexto</td><td>Sesiones muy largas</td></tr>
-              <tr><td class="c1">/undo</td><td>Revierte el último mensaje</td><td>Corregir una instrucción</td></tr>
-              <tr><td class="c1">/exit</td><td>Sale de Claude Code</td><td>Terminar sesión</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="tab-panel">
-          <table class="data-table">
             <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
             <tbody>
-              <tr><td class="c1">/init</td><td>Genera CLAUDE.md del proyecto</td></tr>
+              <tr><td class="c1">/help</td><td>Lista todos los comandos disponibles</td></tr>
+              <tr><td class="c1">/init</td><td>Genera el archivo CLAUDE.md inicial del proyecto</td></tr>
+              <tr><td class="c1">/clear</td><td>Limpia la pantalla de conversación</td></tr>
+              <tr><td class="c1">/compact</td><td>Comprime el contexto con resumen opcional</td></tr>
+              <tr><td class="c1">/memory</td><td>Edita la memoria CLAUDE.md del proyecto</td></tr>
+              <tr><td class="c1">/config</td><td>Abre los ajustes de preferencias</td></tr>
+              <tr><td class="c1">/bug</td><td>Reportar un bug a Anthropic</td></tr>
               <tr><td class="c1">/review</td><td>Revisa el diff actual de git</td></tr>
               <tr><td class="c1">/pr-comments</td><td>Muestra comentarios del PR activo</td></tr>
-              <tr><td class="c1">/terminal-setup</td><td>Configura el shell actual</td></tr>
+              <tr><td class="c1">/terminal-setup</td><td>Configura el shell actual (italics, colores)</td></tr>
             </tbody>
           </table>
         </div>
+
+        <!-- TAB 2: Estado -->
         <div class="tab-panel">
           <table class="data-table">
             <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
             <tbody>
-              <tr><td class="c1">/memory</td><td>Ver la memoria del proyecto</td></tr>
-              <tr><td class="c1">/memory add</td><td>Agrega una nota a la memoria</td></tr>
-              <tr><td class="c1">/memory clear</td><td>Limpia la memoria guardada</td></tr>
-              <tr><td class="c1">/model</td><td>Cambia el modelo de Claude activo</td></tr>
+              <tr><td class="c1">/doctor</td><td>Verifica la instalación y configuración</td></tr>
+              <tr><td class="c1">/upgrade</td><td>Actualiza Claude Code a la última versión</td></tr>
+              <tr><td class="c1">/login</td><td>Autenticar con la cuenta Anthropic</td></tr>
+              <tr><td class="c1">/logout</td><td>Desconectar la cuenta Anthropic</td></tr>
+              <tr><td class="c1">/status</td><td>Ver estado de la cuenta y uso de tokens</td></tr>
+              <tr><td class="c1">/cost</td><td>Muestra el costo de la sesión actual</td></tr>
+              <tr><td class="c1">/version</td><td>Muestra la versión instalada de Claude Code</td></tr>
+              <tr><td class="c1">/whoami</td><td>Muestra el usuario autenticado actualmente</td></tr>
             </tbody>
           </table>
         </div>
+
+        <!-- TAB 3: Sesión -->
+        <div class="tab-panel">
+          <table class="data-table">
+            <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td class="c1">/undo</td><td>Revierte el último mensaje enviado</td></tr>
+              <tr><td class="c1">/exit</td><td>Sale de Claude Code</td></tr>
+              <tr><td class="c1">/model</td><td>Cambia el modelo de Claude activo</td></tr>
+              <tr><td class="c1">/fast</td><td>Activa el modo rápido (Fast Mode)</td></tr>
+              <tr><td class="c1">/slow</td><td>Desactiva el modo rápido</td></tr>
+              <tr><td class="c1">/verbose</td><td>Muestra el output completo de herramientas</td></tr>
+              <tr><td class="c1">/resume</td><td>Retoma una conversación anterior</td></tr>
+              <tr><td class="c1">/conversation</td><td>Lista las conversaciones recientes</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 4: Herramientas -->
+        <div class="tab-panel">
+          <table class="data-table">
+            <thead><tr><th>Comando</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td class="c1">/permissions</td><td>Ver y administrar permisos de herramientas</td></tr>
+              <tr><td class="c1">/tools</td><td>Listar las herramientas disponibles</td></tr>
+              <tr><td class="c1">/mcp</td><td>Administrar servidores MCP conectados</td></tr>
+              <tr><td class="c1">/mcp add</td><td>Agregar un nuevo servidor MCP</td></tr>
+              <tr><td class="c1">/mcp remove</td><td>Eliminar un servidor MCP</td></tr>
+              <tr><td class="c1">/mcp list</td><td>Listar servidores MCP configurados</td></tr>
+              <tr><td class="c1">/install-github-app</td><td>Instalar la app de GitHub para Claude</td></tr>
+              <tr><td class="c1">/allowed-tools</td><td>Configurar herramientas permitidas en la sesión</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- TAB 5: CLI Flags -->
         <div class="tab-panel">
           <div class="code-wrap">
-            <pre><code class="language-bash">claude --allowedTools "Bash,Read,Write"  # limitar herramientas
+            <pre><code class="language-bash"># Iniciar sesiones
+claude                                   # modo interactivo
+claude -p "tarea"                        # modo no interactivo (print)
+claude -p "tarea" --output json          # output estructurado JSON
+claude --resume &lt;session-id&gt;             # retomar sesión anterior
+claude --continue                        # continuar última conversación
+
+# Control de herramientas
+claude --allowedTools "Bash,Read,Write"  # limitar herramientas
 claude --dangerously-skip-permissions    # sin confirmaciones (solo CI)
-claude --no-write                        # solo lectura
-claude --model claude-opus-4-5           # modelo específico
-claude -p "tarea" --output json          # output estructurado</code></pre>
+claude --no-write                        # modo solo lectura
+
+# Modelos y configuración
+claude --model claude-opus-4-6           # modelo específico
+claude --model claude-haiku-4-5          # modelo rápido y económico
+claude --fast                            # activar Fast Mode
+
+# Depuración
+claude --verbose                         # output detallado
+claude --debug                           # modo debug completo
+claude --version                         # ver versión instalada</code></pre>
             <button class="copy-btn">Copiar</button>
           </div>
+        </div>
+
+        <!-- TAB 6: Atajos -->
+        <div class="tab-panel">
+          <table class="data-table">
+            <thead><tr><th>Atajo</th><th>Qué hace</th></tr></thead>
+            <tbody>
+              <tr><td class="c1">Ctrl + C</td><td>Cancelar la operación o respuesta actual</td></tr>
+              <tr><td class="c1">Ctrl + L</td><td>Limpiar la pantalla del terminal</td></tr>
+              <tr><td class="c1">Ctrl + R</td><td>Buscar en el historial de comandos</td></tr>
+              <tr><td class="c1">Tab</td><td>Autocompletar comandos slash (/)</td></tr>
+              <tr><td class="c1">↑ / ↓</td><td>Navegar por el historial de mensajes</td></tr>
+              <tr><td class="c1">Shift + Enter</td><td>Nueva línea sin enviar el mensaje</td></tr>
+              <tr><td class="c1">! comando</td><td>Ejecutar un comando shell directamente</td></tr>
+              <tr><td class="c1">@ archivo</td><td>Referenciar un archivo como contexto</td></tr>
+              <tr><td class="c1"># texto</td><td>Agregar un comentario al historial</td></tr>
+              <tr><td class="c1">Esc</td><td>Cancelar entrada actual sin enviar</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
